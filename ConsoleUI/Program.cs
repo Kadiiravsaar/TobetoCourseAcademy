@@ -1,7 +1,5 @@
 ﻿using Buisness.Concrete;
-using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
-using Entites.Concrete;
 
 //CategoryManager categoryManager = new CategoryManager(new EFCategoryDal());
 
