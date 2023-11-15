@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace Buisness.Abstract
 {
-    public interface ICategoryService : IBaseService<Category>
+    public interface ICategoryService
     {
-
+        List<Category> GetAll();
+        Category GetById(int id);
+        void Add(Category category);
+        void Delete(Category category);
+        void Update(Category category);
     }
 }

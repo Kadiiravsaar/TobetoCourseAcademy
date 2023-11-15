@@ -9,10 +9,38 @@ using System.Threading.Tasks;
 
 namespace Buisness.Concrete
 {
-    public class CategoryManager : BaseManager<Category>, ICategoryService
+    public class CategoryManager : ICategoryService
     {
-        public CategoryManager(IEntityBaseRepository<Category> entityRepository) : base(entityRepository)
+        ICategoryDal _categoryDal;
+        public CategoryManager(ICategoryDal categoryDal)
         {
+            _categoryDal = categoryDal;
+        }
+
+        public void Add(Category category)
+        {
+            _categoryDal.Add(category);
+        }
+
+        public void Delete(Category category)
+        {
+           _categoryDal.Delete(category);   
+        }
+
+        public List<Category> GetAll()
+        {
+           return _categoryDal.GetAll();
+        }
+
+        public Category GetById(int id)
+        {
+            return _categoryDal.Get(x=>x.Id == id);
+        }
+
+        public void Update(Category category)
+        {
+             _categoryDal.Update(category);
+
         }
     }
 }

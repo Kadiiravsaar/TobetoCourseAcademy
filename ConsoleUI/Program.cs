@@ -20,7 +20,7 @@ using Entites.Concrete;
 
 
 
-CourseManager courseManager = new CourseManager(new EFCourseDal(), new EFCourseDal());
+CourseManager courseManager = new CourseManager(new EFCourseDal(), );
 
 
 //Course course1 = new Course

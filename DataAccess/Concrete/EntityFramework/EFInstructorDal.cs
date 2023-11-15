@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccess.Abstract;
 using Entites.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFInstructorDal : EfEntityBaseRepository<Instructor, AppDbContext>, IInstructorDal
+    public class EFInstructorDal : EfEntityRepositoryBase<Instructor, AppDbContext>, IInstructorDal
     {
     }
 }

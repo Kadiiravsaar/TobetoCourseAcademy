@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccess.Abstract;
 using Entites.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFCourseDal : EfEntityBaseRepository<Course, AppDbContext>, ICourseDal
+    public class EFCourseDal : EfEntityRepositoryBase<Course, AppDbContext>, ICourseDal
     {
         public Course GetCourseWithCategory(Expression<Func<Course, bool>> filter)
         {
