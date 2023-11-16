@@ -1,4 +1,5 @@
 ﻿using Entites.Concrete;
+using Entites.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Buisness.Abstract
     {
         List<Course> GetAll();
         List<Course> GetAllByUnitPrice(double minValue, double maxValue);
+        List<CourseDetailDto> GetCourseDetail();
         //List<Course> GetAllByCategoryId(int categoryId);
         Course GetById(int id);
         void Add(Course course);

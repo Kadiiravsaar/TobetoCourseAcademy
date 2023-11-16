@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess;
 using Entites.Concrete;
+using Entites.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace DataAccess.Abstract
 {
     public interface ICourseDal : IEntityRepositoryBase<Course>
     {
-        Course GetCourseWithCategory(Expression<Func<Course,bool>> filter);
+        //Course GetCourseWithCategory(Expression<Func<Course,bool>> filter);
+        List<CourseDetailDto> GetCourseDetail();
     }
 }

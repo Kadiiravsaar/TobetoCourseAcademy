@@ -1,6 +1,7 @@
 ﻿using Buisness.Concrete;
 using DataAccess.Concrete.EntityFramework;
 
+#region Bir önceki commitlerde denemeler
 //CategoryManager categoryManager = new CategoryManager(new EFCategoryDal());
 
 //CourseInstructorManager courseInstructorManager  = new CourseInstructorManager(new EFCourseInstructorDal());
@@ -16,11 +17,6 @@ using DataAccess.Concrete.EntityFramework;
 //ınsturctorManager.Add(instructor1);
 
 
-
-
-CourseManager courseManager = new CourseManager(new EFCourseDal(), );
-
-
 //Course course1 = new Course
 //{
 //    Name = "Ruby2",
@@ -33,14 +29,12 @@ CourseManager courseManager = new CourseManager(new EFCourseDal(), );
 //courseManager.Add(course1);
 
 
-
-
-var curse = courseManager.GetCourse(5); // bu ersin
-foreach (var courseInstructor in curse.CourseInstructors)
-{
-    Console.Write($"{courseInstructor.Instructor.Name} {courseInstructor.Course.Name} ");
-    Console.WriteLine();
-}
+//var curse = courseManager.GetCourse(5); // bu ersin
+//foreach (var courseInstructor in curse.CourseInstructors)
+//{
+//    Console.Write($"{courseInstructor.Instructor.Name} {courseInstructor.Course.Name} ");
+//    Console.WriteLine();
+//}
 
 
 //foreach (var item in courseManager.GetCourse(2))
@@ -66,3 +60,13 @@ foreach (var courseInstructor in curse.CourseInstructors)
 //    Console.Write($"{courseInstructor.Instructor.Name} ");
 //}
 
+
+#endregion
+
+CourseManager courseManager = new CourseManager(new EFCourseDal());
+foreach (var item in courseManager.GetCourseDetail())
+{
+    Console.WriteLine(item.CourseName + " - " + item.CategoryName + " / " + item.CategoryId + " / " + 
+        item.InstructorName);
+	
+}

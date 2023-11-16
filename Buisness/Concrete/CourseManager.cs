@@ -1,6 +1,7 @@
 ﻿using Buisness.Abstract;
 using DataAccess.Abstract;
 using Entites.Concrete;
+using Entites.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,11 @@ namespace Buisness.Concrete
         public Course GetById(int id)
         {
             return _courseDal.Get(c => c.Id == id);
+        }
+
+        public List<CourseDetailDto> GetCourseDetail()
+        {
+            return _courseDal.GetCourseDetail();
         }
 
         public void Update(Course course)
