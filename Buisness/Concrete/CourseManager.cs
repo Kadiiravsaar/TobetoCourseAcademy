@@ -1,4 +1,6 @@
 ﻿using Buisness.Abstract;
+using Buisness.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entites.Concrete;
 using Entites.DTOs;
@@ -19,40 +21,49 @@ namespace Buisness.Concrete
             _courseDal = courseDal;
         }
 
-        public void Add(Course course)
+        public IResult Add(Course course)
         {
             _courseDal.Add(course);
+            return new SuccessResult(Messages.CourseAdded);
         }
 
-        public void Delete(Course course)
+        public IResult Delete(Course course)
         {
             _courseDal.Delete(course);
-
+            return new SuccessResult(Messages.CourseDeleted);
         }
 
-        public List<Course> GetAll()
+        public IDataResult<List<Course>> GetAll()
         {
-            return _courseDal.GetAll();
+            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(),Messages.CourseListed);
         }
 
-        public List<Course> GetAllByUnitPrice(double minValue, double maxValue)
+        public IDataResult<List<Course>> GetAllByUnitPrice(double minValue, double maxValue)
         {
-            return _courseDal.GetAll(p => p.Price > minValue && p.Price < maxValue);
+            return new SuccessDataResult<List<Course>>
+                (_courseDal.GetAll(p => p.Price > minValue && p.Price < maxValue), Messages.GetCourse);
         }
 
-        public Course GetById(int id)
+        public IDataResult<Course> GetById(int id)
         {
-            return _courseDal.Get(c => c.Id == id);
+            return new SuccessDataResult<Course>(_courseDal.Get(x => x.Id == id), Messages.GetCourse);
         }
 
-        public List<CourseDetailDto> GetCourseDetail()
+        public IDataResult<List<CourseDetailDto>> GetCourseDetail()
         {
-            return _courseDal.GetCourseDetail();
+            if (DateTime.Now.Hour == 14)
+            {
+                return new ErrorDataResult<List<CourseDetailDto>>("Sistem Bakımda");
+                
+            }
+            return new SuccessDataResult<List<CourseDetailDto>>(_courseDal.GetCourseDetail(), Messages.GetCourseDetail);
         }
 
-        public void Update(Course course)
+        public IResult Update(Course course)
         {
             _courseDal.Update(course);
+            return new SuccessResult(Messages.CourseUpdated);
+
 
         }
     }

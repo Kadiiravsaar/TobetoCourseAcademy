@@ -1,4 +1,5 @@
-﻿using Entites.Concrete;
+﻿using Core.Utilities.Results;
+using Entites.Concrete;
 using Entites.DTOs;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,13 @@ namespace Buisness.Abstract
 {
     public interface ICourseService
     {
-        List<Course> GetAll();
-        List<Course> GetAllByUnitPrice(double minValue, double maxValue);
-        List<CourseDetailDto> GetCourseDetail();
+        IDataResult<List<Course>> GetAll();
+        IDataResult<List<Course>> GetAllByUnitPrice(double minValue, double maxValue);
+        IDataResult<List<CourseDetailDto>> GetCourseDetail();
         //List<Course> GetAllByCategoryId(int categoryId);
-        Course GetById(int id);
-        void Add(Course course);
-        void Delete(Course course);
-        void Update(Course course);
+        IDataResult<Course> GetById(int id);
+        IResult Add(Course course);
+        IResult Delete(Course course);
+        IResult Update(Course course);
     }
 }
