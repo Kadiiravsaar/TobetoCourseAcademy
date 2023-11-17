@@ -3,15 +3,10 @@ using Buisness.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entites.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Buisness.Concrete
 {
-    public class InsturctorManager : IInsturctorService
+    public class InsturctorManager : IInstructorService
     {
         IInstructorDal _instructorDal;
 
