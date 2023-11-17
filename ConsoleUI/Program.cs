@@ -64,17 +64,30 @@ using DataAccess.Concrete.EntityFramework;
 #endregion
 
 CourseManager courseManager = new CourseManager(new EFCourseDal());
+CourseInstructorManager courseInstructorManager = new CourseInstructorManager(new EFCourseInstructorDal());
 
 var result = courseManager.GetCourseDetail();
-if (result.Success)
-{
-    foreach (var item in result.Data)
-    {
-        Console.WriteLine(item.CourseName + " - " + item.CategoryName + " - " + item.InstructorName);
+//if (result.Success)
+//{
+//    foreach (var x in courseInstructorManager.GetAll().Data)
+//    {
+//        foreach (var item in result.Data)
+//        {
+//            Console.WriteLine(item.CourseName + " - " + x.Instructor.Name);
 
-    }
-}
-else
+//        }
+
+//    }
+
+//}
+//else
+//{
+//    Console.WriteLine(result.Message);
+//}
+
+var query = courseInstructorManager.GetAllDetail();
+
+foreach (var x in query.Data)
 {
-    Console.WriteLine(result.Message);
+    Console.WriteLine(x.CourseName + " / " + x.InstructorName);
 }
