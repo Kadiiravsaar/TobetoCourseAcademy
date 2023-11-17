@@ -1,3 +1,7 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Buisness.DependencyResolvers.Autofac;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +12,21 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+
+//builder.Services.AddScoped<ICategoryService, CategoryManager>();
+//builder.Services.AddScoped<ICategoryDal, EFCategoryDal>();
+
+
+#region Autofac
+
+builder.Host.UseServiceProviderFactory
+    (new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new AutofacBusinessModule()));
+
+
+#endregion
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
