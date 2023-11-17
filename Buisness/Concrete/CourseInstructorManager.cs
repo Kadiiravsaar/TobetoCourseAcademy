@@ -1,6 +1,9 @@
 ﻿using Buisness.Abstract;
+using Buisness.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entites.Concrete;
+using Entites.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,29 +19,40 @@ namespace Buisness.Concrete
         {
             _courseInstructorDal = courseInstructorDal;
         }
-        public void Add(CourseInstructor courseInstructor)
+        public IResult Add(CourseInstructor courseInstructor)
         {
             _courseInstructorDal.Add(courseInstructor);
+            return new SuccessResult(Messages.Added);
+
         }
 
-        public void Delete(CourseInstructor courseInstructor)
+        public IResult Delete(CourseInstructor courseInstructor)
         {
             _courseInstructorDal.Delete(courseInstructor);
+            return new SuccessResult(Messages.Deleteded);
+
         }
 
-        public List<CourseInstructor> GetAll()
+        public IDataResult<List<CourseInstructor>> GetAll()
         {
-            return _courseInstructorDal.GetAll();
+            return new SuccessDataResult<List<CourseInstructor>>(_courseInstructorDal.GetAll(),Messages.Listed);
         }
 
-        public CourseInstructor GetById(int courseInstructorId)
+        public IDataResult<List<CourseInstructorDto>> GetAllDetail()
         {
-            return _courseInstructorDal.Get(p => p.Id == courseInstructorId);
+            return new SuccessDataResult<List<CourseInstructorDto>>(_courseInstructorDal.GetAllDetail(), Messages.Listed);
         }
 
-        public void Update(CourseInstructor courseInstructor)
+        public IDataResult<CourseInstructor> GetById(int courseInstructorId)
+        {
+            return new SuccessDataResult<CourseInstructor>(_courseInstructorDal.Get(p => p.Id == courseInstructorId),Messages.GetData);
+        }
+
+        public IResult Update(CourseInstructor courseInstructor)
         {
             _courseInstructorDal.Update(courseInstructor);
+            return new SuccessResult(Messages.Updated);
+
         }
     }
 }

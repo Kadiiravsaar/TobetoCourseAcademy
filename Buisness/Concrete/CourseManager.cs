@@ -24,34 +24,34 @@ namespace Buisness.Concrete
         public IResult Add(Course course)
         {
             _courseDal.Add(course);
-            return new SuccessResult(Messages.CourseAdded);
+            return new SuccessResult(Messages.Added);
         }
 
         public IResult Delete(Course course)
         {
             _courseDal.Delete(course);
-            return new SuccessResult(Messages.CourseDeleted);
+            return new SuccessResult(Messages.Deleteded);
         }
 
         public IDataResult<List<Course>> GetAll()
         {
-            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(),Messages.CourseListed);
+            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(),Messages.Listed);
         }
 
         public IDataResult<List<Course>> GetAllByUnitPrice(double minValue, double maxValue)
         {
             return new SuccessDataResult<List<Course>>
-                (_courseDal.GetAll(p => p.Price > minValue && p.Price < maxValue), Messages.GetCourse);
+                (_courseDal.GetAll(p => p.Price > minValue && p.Price < maxValue), Messages.GetData);
         }
 
         public IDataResult<Course> GetById(int id)
         {
-            return new SuccessDataResult<Course>(_courseDal.Get(x => x.Id == id), Messages.GetCourse);
+            return new SuccessDataResult<Course>(_courseDal.Get(x => x.Id == id), Messages.GetData);
         }
 
         public IDataResult<List<CourseDetailDto>> GetCourseDetail()
         {
-            if (DateTime.Now.Hour == 14)
+            if (DateTime.Now.Hour == 13)
             {
                 return new ErrorDataResult<List<CourseDetailDto>>("Sistem Bakımda");
                 
@@ -62,7 +62,8 @@ namespace Buisness.Concrete
         public IResult Update(Course course)
         {
             _courseDal.Update(course);
-            return new SuccessResult(Messages.CourseUpdated);
+            return new SuccessResult(Messages.Updated);
+
 
 
         }
