@@ -10,7 +10,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class CateogiresController : ControllerBase
     {
-        private readonly ICategoryService _categoryService;
+         ICategoryService _categoryService;
 
         public CateogiresController(ICategoryService categoryService)
         {

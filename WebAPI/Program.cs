@@ -11,13 +11,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
-
-
-//builder.Services.AddScoped<ICategoryService, CategoryManager>();
-//builder.Services.AddScoped<ICategoryDal, EFCategoryDal>();
-
-
 #region Autofac
 
 builder.Host.UseServiceProviderFactory
@@ -26,6 +19,15 @@ builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerB
 
 
 #endregion
+
+
+var app = builder.Build();
+
+
+//builder.Services.AddScoped<ICategoryService, CategoryManager>();
+//builder.Services.AddScoped<ICategoryDal, EFCategoryDal>();
+
+
 
 
 // Configure the HTTP request pipeline.

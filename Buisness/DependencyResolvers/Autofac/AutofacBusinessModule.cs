@@ -13,7 +13,7 @@ namespace Buisness.DependencyResolvers.Autofac
             builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
             builder.RegisterType<EFCategoryDal>().As<ICategoryDal>().SingleInstance();
 
-            builder.RegisterType<CourseInstructorManager>().As<ICourseInstructorDal>().SingleInstance();
+            builder.RegisterType<CourseInstructorManager>().As<ICourseInstructorService>().SingleInstance();
             builder.RegisterType<EFCourseInstructorDal>().As<ICourseInstructorDal>().SingleInstance();
 
             builder.RegisterType<CourseManager>().As<ICourseService>().SingleInstance();
