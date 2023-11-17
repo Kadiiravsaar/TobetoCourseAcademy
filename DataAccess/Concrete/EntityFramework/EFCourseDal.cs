@@ -51,10 +51,13 @@ namespace DataAccess.Concrete.EntityFramework
             using (AppDbContext context = new AppDbContext())
             {
                 var result = from course in context.Courses
+
                              join courseInstructor in context.CourseInstructors
                              on course.Id equals courseInstructor.CourseId
+
                              join instructor in context.Instructors
                              on courseInstructor.InstructorId equals instructor.Id
+
                              select new CourseDetailDto
                              {
                                 CourseId =course.Id,
