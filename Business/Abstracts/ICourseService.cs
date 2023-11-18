@@ -1,16 +1,17 @@
 ﻿using Core.Utilities.Results;
-using Entites.Concrete;
-using Entites.DTOs;
+using Entities.Concretes;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Buisness.Abstract
+namespace Business.Abstracts
 {
     public interface ICourseService
     {
+
         IDataResult<List<Course>> GetAll();
         IDataResult<List<Course>> GetAllByUnitPrice(double minValue, double maxValue);
         IDataResult<List<CourseDetailDto>> GetCourseDetail();
@@ -19,5 +20,8 @@ namespace Buisness.Abstract
         IResult Add(Course course);
         IResult Delete(Course course);
         IResult Update(Course course);
+
+
+
     }
 }

@@ -1,10 +1,10 @@
 ﻿using Autofac;
-using Buisness.Abstract;
-using Buisness.Concrete;
+using Business.Abstracts;
+using Business.Concretes;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 
-namespace Buisness.DependencyResolvers.Autofac
+namespace Business.DependencyResolvers.Autofac
 {
     public class AutofacBusinessModule : Module
     {
@@ -19,7 +19,7 @@ namespace Buisness.DependencyResolvers.Autofac
             builder.RegisterType<CourseManager>().As<ICourseService>().SingleInstance();
             builder.RegisterType<EFCourseDal>().As<ICourseDal>().SingleInstance();
 
-            builder.RegisterType<InsturctorManager>().As<IInstructorService>().SingleInstance();
+            builder.RegisterType<InstructorManager>().As<IInstructorService>().SingleInstance();
             builder.RegisterType<EFInstructorDal>().As<IInstructorDal>().SingleInstance();
 
         }

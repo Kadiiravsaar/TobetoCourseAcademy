@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entites.DTOs
+namespace Entities.Concretes
 {
-    public class CourseInstructorDto : IDto
+    public class CourseInstructor : IEntity
     {
+        public int Id { get; set; }
         public int CourseId { get; set; }
         public int InstructorId { get; set; }
-
-        public string CourseName { get; set; }
-        public string InstructorName { get; set; }
+        public Course? Course { get; set; }
+        public Instructor? Instructor { get; set; }
     }
 }

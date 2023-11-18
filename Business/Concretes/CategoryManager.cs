@@ -1,14 +1,20 @@
-﻿using Buisness.Abstract;
-using Buisness.Constants;
+﻿using Business.Abstracts;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
-using Entites.Concrete;
+using Entities.Concretes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Buisness.Concrete
+namespace Business.Concretes
 {
     public class CategoryManager : ICategoryService
     {
         ICategoryDal _categoryDal;
+
         public CategoryManager(ICategoryDal categoryDal)
         {
             _categoryDal = categoryDal;
@@ -28,7 +34,7 @@ namespace Buisness.Concrete
 
         public IDataResult<List<Category>> GetAll()
         {
-            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(),Messages.Listed);
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(), Messages.Listed);
         }
 
         public IDataResult<Category> GetById(int id)

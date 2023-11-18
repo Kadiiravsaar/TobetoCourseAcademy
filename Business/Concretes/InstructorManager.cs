@@ -1,16 +1,21 @@
-﻿using Buisness.Abstract;
-using Buisness.Constants;
+﻿using Business.Abstracts;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
-using Entites.Concrete;
+using Entities.Concretes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Buisness.Concrete
+namespace Business.Concretes
 {
-    public class InsturctorManager : IInstructorService
+    public class InstructorManager : IInstructorService
     {
         IInstructorDal _instructorDal;
 
-        public InsturctorManager(IInstructorDal ınstructorDal)
+        public InstructorManager(IInstructorDal ınstructorDal)
         {
             _instructorDal = ınstructorDal;
         }

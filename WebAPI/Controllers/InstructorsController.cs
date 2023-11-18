@@ -1,6 +1,5 @@
-﻿using Buisness.Abstract;
-using Entites.Concrete;
-using Microsoft.AspNetCore.Http;
+﻿using Business.Abstracts;
+using Entities.Concretes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers

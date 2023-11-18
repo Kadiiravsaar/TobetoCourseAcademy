@@ -1,6 +1,10 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Buisness.DependencyResolvers.Autofac;
+using Business.Abstracts;
+using Business.Concretes;
+using Business.DependencyResolvers.Autofac;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,11 +25,11 @@ builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerB
 #endregion
 
 
-var app = builder.Build();
-
-
 //builder.Services.AddScoped<ICategoryService, CategoryManager>();
 //builder.Services.AddScoped<ICategoryDal, EFCategoryDal>();
+
+
+var app = builder.Build();
 
 
 

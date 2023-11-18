@@ -1,16 +1,15 @@
-﻿using Buisness.Abstract;
-using Buisness.Constants;
+﻿using Business.Abstracts;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
-using Entites.Concrete;
-using Entites.DTOs;
+using Entities.Concretes;
+using Entities.Dto;
 
-namespace Buisness.Concrete
+namespace Business.Concretes
 {
     public class CourseManager : ICourseService
     {
         ICourseDal _courseDal;
-
         public CourseManager(ICourseDal courseDal)
         {
             _courseDal = courseDal;
@@ -30,7 +29,7 @@ namespace Buisness.Concrete
 
         public IDataResult<List<Course>> GetAll()
         {
-            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(),Messages.Listed);
+            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(), Messages.Listed);
         }
 
         public IDataResult<List<Course>> GetAllByUnitPrice(double minValue, double maxValue)
@@ -49,7 +48,7 @@ namespace Buisness.Concrete
             if (DateTime.Now.Hour == 13)
             {
                 return new ErrorDataResult<List<CourseDetailDto>>("Sistem Bakımda");
-                
+
             }
             return new SuccessDataResult<List<CourseDetailDto>>(_courseDal.GetCourseDetail(), Messages.GetCourseDetail);
         }
@@ -58,8 +57,6 @@ namespace Buisness.Concrete
         {
             _courseDal.Update(course);
             return new SuccessResult(Messages.Updated);
-
-
 
         }
     }

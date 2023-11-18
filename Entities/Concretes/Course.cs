@@ -1,6 +1,11 @@
 ﻿using Core.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Entites.Concrete
+namespace Entities.Concretes
 {
     public class Course : IEntity
     {
@@ -10,9 +15,8 @@ namespace Entites.Concrete
         public string Description { get; set; }
         public double Price { get; set; }
         public string ImageUrl { get; set; }
-
-        public Category Category { get; set; }
-        public List<CourseInstructor> CourseInstructors { get; set; }
+        public Category? Category { get; set; }
+        public CourseInstructor[]? GetCourseInstructor { get; set; }
 
     }
 }

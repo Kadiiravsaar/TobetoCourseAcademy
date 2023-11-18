@@ -1,10 +1,12 @@
-﻿namespace Buisness.Constants
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Business.Constants
 {
-    /// <summary>
-    /// sürekli new yapmamak için bir static belirledik
-    /// uygulama süre boyunca tek instance olur
-    /// </summary>
-    public static class Messages
+    public class Messages
     {
         #region Course
         public static string CourseAdded = " Kurs Eklendi";
@@ -58,6 +60,5 @@
 
 
         public static string ErrorMessage = " Error Message";
-
     }
 }

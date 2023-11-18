@@ -1,18 +1,16 @@
-﻿using Buisness.Abstract;
-using Core.Utilities.Results;
-using Entites.Concrete;
-using Microsoft.AspNetCore.Http;
+﻿using Business.Abstracts;
+using Entities.Concretes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CateogiresController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
          ICategoryService _categoryService;
 
-        public CateogiresController(ICategoryService categoryService)
+        public CategoriesController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }

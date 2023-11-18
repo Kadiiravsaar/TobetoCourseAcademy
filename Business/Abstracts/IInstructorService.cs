@@ -1,19 +1,21 @@
 ﻿using Core.Utilities.Results;
-using Entites.Concrete;
+using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Buisness.Abstract
+namespace Business.Abstracts
 {
     public interface IInstructorService
     {
         IDataResult<List<Instructor>> GetAll();
         IDataResult<Instructor> GetById(int id);
         IResult Add(Instructor instructor);
-        IResult Delete(Instructor instructor);
+        IResult Delete(Instructor ınstructor);
         IResult Update(Instructor instructor);
+
     }
+
 }

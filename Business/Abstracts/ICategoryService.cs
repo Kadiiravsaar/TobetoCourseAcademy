@@ -1,12 +1,12 @@
 ﻿using Core.Utilities.Results;
-using Entites.Concrete;
+using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Buisness.Abstract
+namespace Business.Abstracts
 {
     public interface ICategoryService
     {
@@ -15,5 +15,7 @@ namespace Buisness.Abstract
         IResult Add(Category category);
         IResult Delete(Category category);
         IResult Update(Category category);
+
+
     }
 }
