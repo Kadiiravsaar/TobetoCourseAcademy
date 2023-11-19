@@ -1,13 +1,12 @@
 ﻿using Business.Abstracts;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concretes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentValidation;
+using ValidationException = FluentValidation.ValidationException;
 
 namespace Business.Concretes
 {
@@ -22,6 +21,8 @@ namespace Business.Concretes
 
         public IResult Add(Category category)
         {
+            ValidationTool.Validate(new CategoryValidator(), category);
+
             _categoryDal.Add(category);
             return new SuccessResult(Messages.Added);
         }
