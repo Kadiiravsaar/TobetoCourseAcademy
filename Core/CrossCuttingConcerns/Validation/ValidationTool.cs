@@ -15,8 +15,6 @@ namespace Core.CrossCuttingConcerns.Validation
             }
 
 
-
-
             //Yukarıda ki kodun tekil hali
             
             //var context = new ValidationContext<Course>(course); 
