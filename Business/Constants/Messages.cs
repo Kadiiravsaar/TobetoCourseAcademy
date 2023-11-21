@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Constants
 {
-    public class Messages
+    public static class Messages
     {
         #region Course
         public static string CourseAdded = " Kurs Eklendi";
