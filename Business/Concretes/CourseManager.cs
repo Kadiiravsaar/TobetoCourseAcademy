@@ -1,5 +1,7 @@
 ﻿using Business.Abstracts;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concretes;
@@ -15,11 +17,14 @@ namespace Business.Concretes
             _courseDal = courseDal;
         }
 
+        [ValidationAspect(typeof(CourseValidator))] 
+        // bu metodu doğrula(ValidationAspect)  (typeof) CourseValidator kullanarak
         public IResult Add(Course course)
         {
             _courseDal.Add(course);
             return new SuccessResult(Messages.Added);
         }
+
 
         public IResult Delete(Course course)
         {

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using IInterceptor = Castle.DynamicProxy.IInterceptor;
 
-namespace Core.Utilities.Interceptors // Interceptors   yol kesmek demek
+namespace Core.Utilities.Interceptors // Interceptors =>  yol kesmek demek
 {
 
     // *************************** classlara | metotlara ekleyebilirsin, birden fazla ekleyebilirsin, inherit edilen noktada da çalışsın
@@ -16,5 +16,7 @@ namespace Core.Utilities.Interceptors // Interceptors   yol kesmek demek
         {                                                                             
             // ne yapacağını boş bıraktım ilerde doludurcam
         }
+
+       
     }
 }
