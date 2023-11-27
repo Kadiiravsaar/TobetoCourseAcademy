@@ -8,10 +8,10 @@ namespace Core.Utilities.Interceptors
         public IInterceptor[] SelectInterceptors(Type type, MethodInfo method, IInterceptor[] interceptors)
         {
             var classAttributes = type.GetCustomAttributes<MethodInterceptionBaseAttribute>
-                (true).ToList(); //     Git classın Attribute'larını oku
+                (true).ToList(); // Git classın Attribute'larını oku
 
 
-            var methodAttributes = type.GetMethod(method.Name) //     Git metodun Attribute'larını oku
+            var methodAttributes = type.GetMethod(method.Name) //  Git metodun Attribute'larını oku
                 .GetCustomAttributes<MethodInterceptionBaseAttribute>(true);
 
             classAttributes.AddRange(methodAttributes);
@@ -24,3 +24,4 @@ namespace Core.Utilities.Interceptors
         }  
     }
 }
+
