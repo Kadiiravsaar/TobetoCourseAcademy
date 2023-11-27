@@ -2,8 +2,10 @@
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concretes;
 using Entities.Dto;
 
@@ -12,19 +14,33 @@ namespace Business.Concretes
     public class CourseManager : ICourseService
     {
         ICourseDal _courseDal;
-        public CourseManager(ICourseDal courseDal)
+        ICategoryService _categoryService ;
+
+        // bir entity manager kendisi hariç başka Dal'ı enjekte edemez ***
+
+        public CourseManager(ICourseDal courseDal, ICategoryService categoryService)
         {
             _courseDal = courseDal;
+            _categoryService = categoryService;
         }
 
-        [ValidationAspect(typeof(CourseValidator))] 
+
+        [ValidationAspect(typeof(CourseValidator))]
         // bu metodu doğrula(ValidationAspect)  (typeof) CourseValidator kullanarak
         public IResult Add(Course course)
         {
+
+            var result = BusinessRules.Run(CheckIfProdCountOfCategory(course.Id),CheckIfCourseNameExists(course.Name),
+                CheckIfCategoryLimitExceded());
+
+            if (result!=null)
+            {
+                return result;
+            }
+
             _courseDal.Add(course);
             return new SuccessResult(Messages.Added);
         }
-
 
         public IResult Delete(Course course)
         {
@@ -64,5 +80,45 @@ namespace Business.Concretes
             return new SuccessResult(Messages.Updated);
 
         }
+        private IResult CheckIfProdCountOfCategory(int id)
+        {
+
+            var result = _courseDal.GetAll(x => x.CategoryId == id).Count();
+
+            if (result >= 15)
+            {
+                return new ErrorDataResult<Course>("Sayı 15den büyük");
+            }
+            else
+                return new SuccessResult("Başarılı");
+        }
+        private IResult CheckIfCourseNameExists(string course)
+        {
+
+            var result = _courseDal.GetAll(x => x.Name == course).Any();
+
+            if (result)
+            {
+                return new ErrorDataResult<Course>("Aynı isimden var aga");
+            }
+            else
+                return new SuccessResult("Başarılı");
+        }
+
+        private IResult CheckIfCategoryLimitExceded()
+        {
+
+            var result = _categoryService.GetAll();
+
+            if (result.Data.Count()>=15)
+            {
+                return new ErrorDataResult<Course>("15i geçti aga ürün ekleme");
+            }
+            else
+                return new SuccessResult("Başarılı");
+        }
+
+
+
     }
 }
