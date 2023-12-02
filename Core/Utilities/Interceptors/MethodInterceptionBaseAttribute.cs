@@ -1,6 +1,4 @@
 ﻿using Castle.DynamicProxy;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using IInterceptor = Castle.DynamicProxy.IInterceptor;
 
 namespace Core.Utilities.Interceptors // Interceptors =>  yol kesmek demek
 {

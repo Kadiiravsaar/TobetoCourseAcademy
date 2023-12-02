@@ -8,9 +8,7 @@ namespace Core.Utilities.Results
 {
     public class Result : IResult
     {
-        public bool Success { get; }
-        public string Message { get; } // readonly olanlar yani get'ler ctor da set edilebilir
-        public Result(bool success,string message) : this(success) // tek parametreli olanı çalıştır
+        public Result(bool success, string message) : this(success) // tek parametreli olanı çalıştır
         {
             Message = message;
         }
@@ -22,7 +20,10 @@ namespace Core.Utilities.Results
         public Result(bool success) // overloading deniyor
         {
             Success = success;
-            
+
         }
+        public bool Success { get; }
+        public string Message { get; } // readonly olanlar yani get'ler ctor da set edilebilir
+        
     }
 }
